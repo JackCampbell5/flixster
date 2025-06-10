@@ -30,6 +30,9 @@ function MovieList({data}) {
     const handleClose = () => setModelShown(false);
     const handleShow = () => setModelShown(true);
 
+    const [activeMovie, setActiveMovie] = useState(data[0]);
+
+
 
 
   return (
@@ -40,10 +43,10 @@ function MovieList({data}) {
       <p>{isUpate}</p>
       <div id="movies">
       {data.map(obj => (
-          <Movie key={num++} movieDict={obj} modal={handleShow}/>
+          <Movie key={num++} movieDict={obj} modal={handleShow} setActiveMovie={setActiveMovie}/>
       ))}
       </div>
-      <PopOut data={data[0]} modalShown={modelShown} closeModal={handleClose}/>
+      <PopOut data={activeMovie} modalShown={modelShown} closeModal={handleClose}/>
     </div>
   );
 }

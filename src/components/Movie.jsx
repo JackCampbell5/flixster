@@ -6,7 +6,7 @@ import PropTypes, { func } from 'prop-types';
 
 
 
-function Movie({movieDict,modal}) {
+function Movie({movieDict,modal,setActiveMovie}) {
     // Setup params
     let title = movieDict.title;
     let poster = movieDict.poster;
@@ -24,10 +24,14 @@ function Movie({movieDict,modal}) {
         movieDict.watched = !isWactched;
         setIsWatched(!isWactched);
     }
+    function clickMovie() {
+        setActiveMovie(movieDict);
+        modal();
+    }
 
   return (
     // JSX code for rendering the component
-    <div className="Movie" onClick={modal}>
+    <div className="Movie" onClick={clickMovie}>
         <img className="poster" src={`https://image.tmdb.org/t/p/w342/${poster}`}/>
         <p className="title">{title}</p>
         <p className="Rating">Rating: {rating}</p>
