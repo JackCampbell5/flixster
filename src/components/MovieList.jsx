@@ -24,13 +24,11 @@ function MovieList({data}) {
             }
         }
         setIsUpdated(retStr+retStr2);
-        console.log(data);
     }
 
-    // const [modelShown, setModelShown] = useState(false);
-    // const swapModel = () => {
-    //     setModelShown(!modelShown);
-    // }
+    const [modelShown, setModelShown] = useState(false);
+    const handleClose = () => setModelShown(false);
+    const handleShow = () => setModelShown(true);
 
 
 
@@ -42,10 +40,10 @@ function MovieList({data}) {
       <p>{isUpate}</p>
       <div id="movies">
       {data.map(obj => (
-          <Movie key={num++} movieDict={obj}/>
+          <Movie key={num++} movieDict={obj} modal={handleShow}/>
       ))}
       </div>
-      <PopOut data={data[0]}/>
+      <PopOut data={data[0]} modalShown={modelShown} closeModal={handleClose}/>
     </div>
   );
 }

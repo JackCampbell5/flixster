@@ -1,6 +1,6 @@
 /* The Modal (background) */
 .modal {
-    display: none; /* Hidden by default */
+    /* display: none; Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
     left: 0;
@@ -24,6 +24,13 @@
     box-shadow: 0 0 10px rgb(0, 0, 0)
 
   }
+.modalVisible{
+    display: block;
+}
+.modalHidden{
+    display: none;
+}
+
 
   /* The Close Button */
   .close {

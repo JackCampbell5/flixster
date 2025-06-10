@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 
 
 
-function PopOut({data}) {
+function PopOut({data,modalShown,closeModal}) {
     let title = data.title;
     let poster = data.poster;
     let date = data.date;
@@ -15,32 +15,33 @@ function PopOut({data}) {
     let rating = data.rating;
     const handleOutsideClick = (e) => {
         if (e.target.className === 'modal') {
-          closeModal();
+            closeModal();
         }
       };
 
     useEffect(() => {
        window.addEventListener('click', handleOutsideClick);
     })
-    console.log(rating)
   return (
     // JSX code for rendering the component
     <div className="PopOut">
-      <h3>PopOut</h3>
-      <div id="myModal" className="modal">
-            <div className="modal-content">
-                <span className="close" id="model-close">&times;</span>
-                <div id="movie-viewer">
-                    <header id="pop-header">
-                        <img className="poster-large" src={`https://image.tmdb.org/t/p/w780/${poster}`}/>
-                        <div id="movie-info">
-                            <p className="title">{title}</p>
-                            <p className="date">{date}</p>
-                            <p className="gerne">{gerne}</p>
-                            <p className="rating">{rating}</p>
-                        </div>
-                    </header>
-                    <p className="overview">{overview}</p>
+        <div className={modalShown? 'modalVisible' : 'modalHidden'} >
+            <h3>PopOut</h3>
+            <div id="myModal" className="modal">
+                <div className="modal-content">
+                    <span className="close" id="model-close" onClick={closeModal}>&times;</span>
+                    <div id="movie-viewer">
+                        <header id="pop-header">
+                            <img className="poster-large" src={`https://image.tmdb.org/t/p/w780/${poster}`}/>
+                            <div id="movie-info">
+                                <p className="title">{title}</p>
+                                <p className="date">{date}</p>
+                                <p className="gerne">{gerne}</p>
+                                <p className="rating">{rating}</p>
+                            </div>
+                        </header>
+                        <p className="overview">{overview}</p>
+                    </div>
                 </div>
             </div>
         </div>
