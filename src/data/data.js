@@ -1,4 +1,4 @@
-const data = {
+export const data = {
     "page": 1,
     "results": [
     {

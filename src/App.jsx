@@ -1,21 +1,26 @@
-import { useState } from 'react'
+import { useState,useEffect } from 'react'
 import './App.css'
 import NavBar from './components/NavBar'
 import SideBar from './components/SideBar'
 import MovieList from './components/MovieList'
-import PopOut from './components/PopOut'
 import Footer from './components/Footer'
+import { fetchData } from './utils/utils'
+import {data} from './data/data.js'
+
 
 const App = () => {
-  return (
-    <div className="App">
-    <NavBar />
-    <SideBar />
-    <MovieList />
-    <PopOut />
-    <Footer />
-    </div>
-  )
+  const [movieData, setMovieData] = useState(null);
+  useEffect((()=>{fetchData(setMovieData)}),[])
+  if(movieData!==null){
+    return (
+      <div className="App">
+      <NavBar />
+      <SideBar />
+      <MovieList data={movieData}/>
+      <Footer />
+      </div>
+    )
+  }
 }
 
 export default App
