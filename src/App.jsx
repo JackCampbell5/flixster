@@ -4,7 +4,7 @@ import NavBar from './components/NavBar'
 import SideBar from './components/SideBar'
 import MovieList from './components/MovieList'
 import Footer from './components/Footer'
-import { fetchData,parseData } from './utils/utils'
+import { fetchData } from './utils/utils'
 import {data} from './data/data.js'
 
 
