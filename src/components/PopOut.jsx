@@ -16,6 +16,8 @@ function PopOut({data,modalShown,closeModal}) {
     let rating = data.rating;
     let liked =  data.liked;
     let watched =  data.watched;
+    let trailer = data.trailer;
+    let backdrop = data.backdrop;
     const handleOutsideClick = (e) => {
         if (e.target.className === 'modal') {
             closeModal();
@@ -40,11 +42,16 @@ function PopOut({data,modalShown,closeModal}) {
                                 <p className="title">{title}</p>
                                 <p className="date">Release Date: {date}</p>
                                 <p className="gerne">Genre: {genre}</p>
-                                <p className="rating">{rating}</p>
+                                <p className="rating">Rating: {rating}</p>
                             <LikeWatch movieDict={data}/>
                             </div>
                         </header>
                         <p className="overview">{overview}</p>
+                        <div className="trailer">
+                            <h2>Trailer</h2>
+                            {trailer === "" ? <p>No Trailer Available</p> :
+                            <a href={trailer}> <img id ="backdrop" src={`https://image.tmdb.org/t/p/w342/${backdrop}`}/></a>}
+                        </div>
                     </div>
                 </div>
             </div>

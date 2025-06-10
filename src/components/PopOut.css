@@ -60,3 +60,11 @@
 #movie-info{
     text-align: left;
 }
+
+#backdrop{
+    width: 70vw;
+}
+#backdrop:hover{
+    border: #6000a0 solid 5px;
+    width: calc(70vw - 10px);
+}

@@ -43,7 +43,7 @@ function MovieList({data}) {
       <p>{isUpate}</p>
       <div id="movies">
       {data.map(obj => (
-          <Movie key={num++} movieDict={obj} modal={handleShow} setActiveMovie={setActiveMovie}/>
+          <Movie key={obj.id} movieDict={obj} modal={handleShow} setActiveMovie={setActiveMovie}/>
       ))}
       </div>
       <PopOut data={activeMovie} modalShown={modelShown} closeModal={handleClose}/>
