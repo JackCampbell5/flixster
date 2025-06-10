@@ -8,7 +8,7 @@ import Movie from './Movie'
 
 
 
-function MovieList({data}) {
+function MovieList({data,searchTerm}) {
     let num = 0;
     const [isUpate, setIsUpdated] = useState("");
 
@@ -42,9 +42,10 @@ function MovieList({data}) {
       <button className="update" onClick={updateMovie}>Update</button>
       <p>{isUpate}</p>
       <div id="movies">
-      {data.map(obj => (
-          <Movie key={obj.id} movieDict={obj} modal={handleShow} setActiveMovie={setActiveMovie}/>
-      ))}
+      {data.map(obj =>  {if(searchTerm === "" || obj.title.toLowerCase().includes(searchTerm.toLowerCase())){
+          return(<Movie key={obj.id} movieDict={obj} modal={handleShow} setActiveMovie={setActiveMovie}/>)
+      }else{<p>obj.id</p>}
+      })}
       </div>
       <PopOut data={activeMovie} modalShown={modelShown} closeModal={handleClose}/>
     </div>

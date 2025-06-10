@@ -6,15 +6,24 @@ import PropTypes, { func } from 'prop-types';
 
 
 let searchQuary = "";
-function NavBar({data}) {
+function NavBar({data, searchTerm,saveSearchTerm,search}) {
+  function clearSearch() {
+  searchTerm = "";
+  saveSearchTerm("")
+  }
+  function submitSearch(newData){
+    saveSearchTerm(newData.target.value);
+  }
   // const [searchQuary, updateSearchQuary] = useState("");
   return (
     // JSX code for rendering the component
     <div className="NavBar">
       <h1>Movie Night</h1>
-      {/* <input type="text" value={searchQuary} onChange={handleSearchChange} placeholder="Search" /> */}
-      <button className="search-button" id="submit-button">Search</button>
-      <button className="search-button" id="clear-button">Clear</button>
+      <form onSubmit={search}>
+        <input id="search-box" name="dataInput" value={searchTerm} onChange={submitSearch} placeholder="Movie Titles"/>
+        <button type="submit" id="submit-button">Search</button>
+        <button className="search-button" id="clear-button" onClick={clearSearch}>Clear</button>
+      </form>
     </div>
   );
 }
