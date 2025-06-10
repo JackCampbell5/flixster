@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import {useState} from "react";
+import LikeWatch from "./LikeWatch";
 import './Movie.css'
 import PropTypes, { func } from 'prop-types';
 
@@ -11,19 +12,8 @@ function Movie({movieDict,modal,setActiveMovie}) {
     let title = movieDict.title;
     let poster = movieDict.poster;
     let rating = movieDict.rating;
-    const [isSaved, setIsSaved] = useState(movieDict.saved);
-    const [isWactched, setIsWatched] = useState(movieDict.watched);
+    //TOOD make it one variable for like and watch for both the pop up and it
 
-
-    const saveMovie = () => {
-        movieDict.saved = !isSaved;
-        setIsSaved(!isSaved);
-    }
-
-    const watchedMovie = () => {
-        movieDict.watched = !isWactched;
-        setIsWatched(!isWactched);
-    }
     function clickMovie() {
         setActiveMovie(movieDict);
         modal();
@@ -35,8 +25,7 @@ function Movie({movieDict,modal,setActiveMovie}) {
         <img className="poster" src={`https://image.tmdb.org/t/p/w342/${poster}`}/>
         <p className="title">{title}</p>
         <p className="Rating">Rating: {rating}</p>
-        <button className="save" onClick={saveMovie}>Saved {isSaved.toString()}</button>
-        <button className="watched" onClick={watchedMovie}>Watched {isWactched.toString()}</button>
+        <LikeWatch movieDict={movieDict}/>
     </div>
   );
 }

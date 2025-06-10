@@ -3,6 +3,7 @@ import {useEffect} from "react";
 import ReactDOM from "react-dom";
 import './PopOut.css'
 import PropTypes from 'prop-types';
+import LikeWatch from "./LikeWatch";
 
 
 
@@ -11,8 +12,10 @@ function PopOut({data,modalShown,closeModal}) {
     let poster = data.poster;
     let date = data.date;
     let overview = data.overview;
-    let gerne = data.gerne;
+    let genre = data.genre;
     let rating = data.rating;
+    let liked =  data.liked;
+    let watched =  data.watched;
     const handleOutsideClick = (e) => {
         if (e.target.className === 'modal') {
             closeModal();
@@ -35,9 +38,10 @@ function PopOut({data,modalShown,closeModal}) {
                             <img className="poster-large" src={`https://image.tmdb.org/t/p/w780/${poster}`}/>
                             <div id="movie-info">
                                 <p className="title">{title}</p>
-                                <p className="date">{date}</p>
-                                <p className="gerne">{gerne}</p>
+                                <p className="date">Release Date: {date}</p>
+                                <p className="gerne">Genre: {genre}</p>
                                 <p className="rating">{rating}</p>
+                            <LikeWatch movieDict={data}/>
                             </div>
                         </header>
                         <p className="overview">{overview}</p>

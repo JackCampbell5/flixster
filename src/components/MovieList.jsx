@@ -13,10 +13,10 @@ function MovieList({data}) {
     const [isUpate, setIsUpdated] = useState("");
 
     const updateMovie = () => {
-        let retStr = "Saved:"
+        let retStr = "Liked:"
         let retStr2 = "Watched  :"
         for(let a of data){
-            if(a.saved === true){
+            if(a.liked === true){
                 retStr += a.title + " <br />";
             }
             if(a.watched === true){
