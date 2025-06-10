@@ -1,21 +1,44 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import {useState} from "react";
 import './Movie.css'
-import PropTypes from 'prop-types';
+import PropTypes, { func } from 'prop-types';
 
 
 
-function Movie({data}) {
+function Movie({movieDict,openModel}) {
+    // Setup params
+    let title = movieDict.title;
+    let poster = movieDict.poster;
+    let rating = movieDict.rating;
+    const [isSaved, setIsSaved] = useState(movieDict.saved);
+    const [isWactched, setIsWatched] = useState(movieDict.watched);
+
+
+    const saveMovie = () => {
+        movieDict.saved = !isSaved;
+        setIsSaved(!isSaved);
+    }
+
+    const watchedMovie = () => {
+        movieDict.watched = !isWactched;
+        setIsWatched(!isWactched);
+    }
+
   return (
     // JSX code for rendering the component
     <div className="Movie">
-      <h3>Movie</h3>
+        <img className="poster" src={`https://image.tmdb.org/t/p/w342/${poster}`}/>
+        <p className="title">{title}</p>
+        <p className="Rating">Rating: {rating}</p>
+        <button className="save" onClick={saveMovie}>Saved {isSaved.toString()}</button>
+        <button className="watched" onClick={watchedMovie}>Watched {isWactched.toString()}</button>
     </div>
   );
 }
 
 Movie.propTypes = {
-    data: PropTypes.array.isRequired,
+    // data: PropTypes.array.isRequired,
 };
 
 
