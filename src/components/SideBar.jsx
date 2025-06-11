@@ -10,7 +10,7 @@ function SideBar({data,setViewType}) {
     // JSX code for rendering the component
     <div className="SideBar">
       <h3>View</h3>
-      <button onClick={()=>setViewType("all")}>All</button>
+      <button onClick={()=>setViewType("all")}>Home</button>
       <button onClick={()=>setViewType("liked")}>Liked</button>
       <button onClick={()=>setViewType("watched")}>Watched</button>
     </div>

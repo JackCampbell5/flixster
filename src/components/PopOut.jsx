@@ -14,9 +14,8 @@ function PopOut({data,modalShown,closeModal,isLiked, setIsLiked,isWactched, setI
     let overview = data.overview;
     let genre = data.genre;
     let rating = data.rating;
-    let liked =  data.liked;
-    let watched =  data.watched;
     let trailer = data.trailer;
+    let runtime = data.runtime;
     let backdrop = data.backdrop;
     const handleOutsideClick = (e) => {
         if (e.target.className === 'modal') {
@@ -43,6 +42,7 @@ function PopOut({data,modalShown,closeModal,isLiked, setIsLiked,isWactched, setI
                                 <p className="date">Release Date: {date}</p>
                                 <p className="gerne">Genre: {genre}</p>
                                 <p className="rating">Rating: {rating}</p>
+                                <p className="runtime">Runtime: {runtime} Minutes</p>
                             <LikeWatch movieDict={data} isLiked={isLiked} setIsLiked={setIsLiked} isWactched={isWactched} setIsWatched={setIsWatched}/>
                             </div>
                         </header>
