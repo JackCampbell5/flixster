@@ -2,7 +2,7 @@ body {
   margin: 0;
   font-family: Arial, sans-serif;
   background-color: #16002a;
-  color: white;
+  color: rgb(255, 231, 255);
 }
 
 button{
@@ -11,7 +11,7 @@ button{
   padding: 5px;
   background-color: rgb(115, 0, 115);
   border: 3px solid rgb(48, 0, 48);
-  color: white;
+  color: rgb(255, 231, 255);;
   font-size: 100%;
   border-radius: 10px;
 }

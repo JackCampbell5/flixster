@@ -5,6 +5,10 @@
     align-items: center;
     flex-wrap: wrap;
 }
+h1{
+    font-size: 400%;
+    margin: 20px;
+}
 /* The buttons in the nav bar */
 button{
     margin: 5px;

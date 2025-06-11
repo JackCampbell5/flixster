@@ -35,7 +35,7 @@
 
   /* The Close Button */
   .close {
-    color: #aaa;
+    color: rgb(255, 231, 255);;
     float: right;
     font-size: 28px;
     font-weight: bold;
@@ -43,7 +43,7 @@
 
   .close:hover,
   .close:focus {
-    color: black;
+    color: rgb(132, 62, 132);
     text-decoration: none;
     cursor: pointer;
   }
