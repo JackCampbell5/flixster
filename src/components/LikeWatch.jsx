@@ -5,22 +5,20 @@ import './LikeWatch.css'
 import PropTypes, { func } from 'prop-types';
 
 
-function LikeWatch({movieDict}) {
-
-    const [isLiked, setIsLiked] = useState(movieDict.liked);
-    const [isWactched, setIsWatched] = useState(movieDict.watched);
+function LikeWatch({movieDict, isLiked, setIsLiked,isWactched, setIsWatched}) {
 
     const likeMovie = (e) => {
         e.stopPropagation();
-        movieDict.liked = !isLiked;
         setIsLiked(!isLiked);
+        movieDict.liked = !isLiked
     }
 
     const watchedMovie = (e) => {
         e.stopPropagation();
-        movieDict.watched = !isWactched;
         setIsWatched(!isWactched);
+        movieDict.watched = !isWactched
     }
+
   return (
     // JSX code for rendering the component
     <div className="LikeWatch">

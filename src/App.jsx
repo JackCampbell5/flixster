@@ -16,6 +16,8 @@ const App = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchSubmit, setSearchSubmit] = useState("");
   const [sortType, setSortType] = useState("defaultA");
+  const [viewType, setViewType] = useState("all");
+
 
   const saveSortType = (newData) => {
     setSortType(newData.target.value);
@@ -35,10 +37,14 @@ const App = () => {
   if(movieData!==null){
     return (
       <div className="App">
+      <div className='Side'>
+        <SideBar setViewType={setViewType}/>
+      </div>
+      <main>
       <NavBar searchTerm={searchTerm} saveSearchTerm = {saveSearchTerm} search={search} sortType={sortType} saveSortType={saveSortType}/>
-      <SideBar />
-      <MovieList data={movieData} searchTerm={searchSubmit}/>
+      <MovieList data={movieData} searchTerm={searchSubmit} viewType={viewType}/>
       <Footer />
+      </main>
       </div>
     )
   }

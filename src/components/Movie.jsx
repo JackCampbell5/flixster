@@ -2,22 +2,37 @@ import React from "react";
 import ReactDOM from "react-dom";
 import {useState} from "react";
 import LikeWatch from "./LikeWatch";
+import PopOut from './PopOut'
 import './Movie.css'
 import PropTypes, { func } from 'prop-types';
 
 
 
-function Movie({movieDict,modal,setActiveMovie}) {
+function Movie({movieDict,modal,setActiveMovie,modalShown,closeModal}) {
     // Setup params
     let title = movieDict.title;
     let poster = movieDict.poster;
     let rating = movieDict.rating;
-    //TOOD make it one variable for like and watch for both the pop up and it
+
+    const [isLiked, setIsLiked] = useState(false);
+    const [isWactched, setIsWatched] = useState(false);
+
+    const [thisModelShown, setThisModelShown] = useState(false);
+
 
     function clickMovie() {
         setActiveMovie(movieDict);
-        modal();
+        if(!modalShown){
+            modal();
+            setThisModelShown(true);
+        }
     }
+
+    function closeThisModal(){
+        closeModal();
+        setThisModelShown(false);
+    }
+
 
   return (
     // JSX code for rendering the component
@@ -26,7 +41,8 @@ function Movie({movieDict,modal,setActiveMovie}) {
         <p className="title">{title}</p>
         <p className="Rating">Rating: {rating}</p>
         {movieDict.date}
-        <LikeWatch movieDict={movieDict}/>
+        <LikeWatch movieDict={movieDict} isLiked={isLiked} setIsLiked={setIsLiked} isWactched={isWactched} setIsWatched={setIsWatched}/>
+        <PopOut data={movieDict} modalShown={thisModelShown} closeModal={closeThisModal} isLiked={isLiked} setIsLiked={setIsLiked} isWactched={isWactched} setIsWatched={setIsWatched}/>
     </div>
   );
 }

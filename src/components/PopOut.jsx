@@ -7,7 +7,7 @@ import LikeWatch from "./LikeWatch";
 
 
 
-function PopOut({data,modalShown,closeModal}) {
+function PopOut({data,modalShown,closeModal,isLiked, setIsLiked,isWactched, setIsWatched}) {
     let title = data.title;
     let poster = data.poster;
     let date = data.date;
@@ -43,7 +43,7 @@ function PopOut({data,modalShown,closeModal}) {
                                 <p className="date">Release Date: {date}</p>
                                 <p className="gerne">Genre: {genre}</p>
                                 <p className="rating">Rating: {rating}</p>
-                            <LikeWatch movieDict={data}/>
+                            <LikeWatch movieDict={data} isLiked={isLiked} setIsLiked={setIsLiked} isWactched={isWactched} setIsWatched={setIsWatched}/>
                             </div>
                         </header>
                         <p className="overview">{overview}</p>

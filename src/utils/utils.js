@@ -36,7 +36,6 @@ async function parseData(data,genreData) {
         const detailData = await detailResults.json();
 
         let trailer = await getTrailer(a.id)
-        console.log(trailer)
 
         let dict = {};
         dict["id"] = a.id;
