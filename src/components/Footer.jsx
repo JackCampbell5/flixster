@@ -9,7 +9,7 @@ function Footer({data}) {
   return (
     // JSX code for rendering the component
     <div className="Footer">
-      <h3>Footer</h3>
+      <p className="authorName">Jack Campbell 2025 © <a href="mailto:jackbcampbell15@gmail.com">jackbcampbell15@gmail.com</a>      </p>
     </div>
   );
 }

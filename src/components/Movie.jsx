@@ -38,7 +38,7 @@ function Movie({movieDict,modal,setActiveMovie,modalShown,closeModal}) {
     // JSX code for rendering the component
     <div className="Movie" onClick={clickMovie}>
         <div className="moviePoster">
-            <img className="poster" src={`https://image.tmdb.org/t/p/w342/${poster}`}/>
+            <img className="poster" src={`https://image.tmdb.org/t/p/w342/${poster}`} alt={title + "Poster"}/>
         </div>
         <p className="title">{title}</p>
         <p className="Rating">Rating: {rating}</p>

@@ -36,7 +36,7 @@ function PopOut({data,modalShown,closeModal,isLiked, setIsLiked,isWactched, setI
                     <span className="close" id="model-close" onClick={closeModal}>&times;</span>
                     <div id="movie-viewer">
                         <header id="pop-header">
-                            <img className="poster-large" src={`https://image.tmdb.org/t/p/w780/${poster}`}/>
+                            <img className="poster-large" src={`https://image.tmdb.org/t/p/w780/${poster}`} alt={title + "Poster"}/>
                             <div id="movie-info">
                                 <p className="titlePop">{title}</p>
                                 <div className="detailPop">
@@ -60,7 +60,7 @@ function PopOut({data,modalShown,closeModal,isLiked, setIsLiked,isWactched, setI
                         </header>
                             <div className="moreInfo">
                                 <p className="overviewPop">{overview}</p>
-                                <img className="backdrop-large" src={`https://image.tmdb.org/t/p/w780/${backdrop}`}/>
+                                <img className="backdrop-large" src={`https://image.tmdb.org/t/p/w780/${backdrop}`} alt={title + "backdrop image"}/>
                             </div>
                         <div className="trailer">
                             <h2>Trailer</h2>
