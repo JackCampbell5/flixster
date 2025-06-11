@@ -14,8 +14,8 @@ function Movie({movieDict,modal,setActiveMovie,modalShown,closeModal}) {
     let poster = movieDict.poster;
     let rating = movieDict.rating;
 
-    const [isLiked, setIsLiked] = useState(false);
-    const [isWactched, setIsWatched] = useState(false);
+    const [isLiked, setIsLiked] = useState(movieDict.liked);
+    const [isWactched, setIsWatched] = useState(movieDict.watched);
 
     const [thisModelShown, setThisModelShown] = useState(false);
 

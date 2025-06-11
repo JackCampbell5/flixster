@@ -47,7 +47,7 @@ const App = () => {
     return (
       <div className="App">
       <div className='Side'>
-        <SideBar setViewType={setViewType}/>
+        <SideBar viewType={viewType} setViewType={setViewType}/>
       </div>
       <main>
       <NavBar searchTerm={searchTerm} saveSearchTerm = {saveSearchTerm} search={search} sortType={sortType} saveSortType={saveSortType}/>

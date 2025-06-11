@@ -26,7 +26,8 @@ function MovieList({data,searchTerm,viewType,getMore}) {
       }}else{<p>{obj.id}</p>}
       })}
       </div>
-      <button className="update" onClick={getMore}>Load More</button>
+     { viewType==="all" ?
+      <button className="update" onClick={getMore}>Load More</button>:<p>No More Movies Left</p>}
     </div>
   );
 }

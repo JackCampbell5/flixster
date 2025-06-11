@@ -3,6 +3,9 @@ import {useState} from "react";
 import ReactDOM from "react-dom";
 import './LikeWatch.css'
 import PropTypes, { func } from 'prop-types';
+import { IoHeartDislikeOutline,IoHeartSharp } from "react-icons/io5";
+import { MdOutlineMovieCreation,MdMovie } from "react-icons/md";
+
 
 
 function LikeWatch({movieDict, isLiked, setIsLiked,isWactched, setIsWatched}) {
@@ -22,8 +25,8 @@ function LikeWatch({movieDict, isLiked, setIsLiked,isWactched, setIsWatched}) {
   return (
     // JSX code for rendering the component
     <div className="LikeWatch">
-    <button className="like" onClick={likeMovie}>Liked {isLiked.toString()}</button>
-    <button className="watched" onClick={watchedMovie}>Watched {isWactched.toString()}</button>
+    <button className="like" onClick={likeMovie}>{isLiked ? <IoHeartSharp className="icon"/> : <IoHeartDislikeOutline className="icon"/>}</button>
+    <button className="watched" onClick={watchedMovie}>{isWactched ?<MdMovie className="icon"/> :<MdOutlineMovieCreation className="icon"/>    }</button>
     </div>
   );
 }

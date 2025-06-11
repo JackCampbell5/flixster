@@ -6,14 +6,16 @@
     width: 200px;
     height: 300pxpx;
     color: rgb(255, 231, 255);
-    /* display: none; */
+    transition: all 0.2s linear;
+    border: #460075 solid 0px;
 }
-.Movie:hover{
+.Movie:hover {
     border: #460075 solid 10px;
     width: calc(200px - 20px);
+    transition: all 0.2s linear;
 }
-.moviePoster:hover img{
-    width: calc(200px - 20px);
+.Movie .moviePoster img{
+    width: 100%;
 }
 
 .title{

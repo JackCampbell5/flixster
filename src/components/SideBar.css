@@ -1,0 +1,20 @@
+.SideBar{
+    position:fixed;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    top: 35%;
+}
+.SideBar button{
+    padding: 10px 10px;
+    width: min(10vw,100px);
+}
+.unselected{
+    border: 5px solid rgb(165, 0, 165);
+}
+.selected{
+    background-color: rgb(231, 0, 231);
+    border: 5px solid rgb(255, 136, 255);
+}

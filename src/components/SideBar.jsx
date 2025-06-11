@@ -5,14 +5,13 @@ import PropTypes from 'prop-types';
 
 
 
-function SideBar({data,setViewType}) {
+function SideBar({data,viewType, setViewType}) {
   return (
     // JSX code for rendering the component
     <div className="SideBar">
-      <h3>View</h3>
-      <button onClick={()=>setViewType("all")}>Home</button>
-      <button onClick={()=>setViewType("liked")}>Liked</button>
-      <button onClick={()=>setViewType("watched")}>Watched</button>
+      <button className={viewType === "all"?"selected":"unselected"} onClick={()=>setViewType("all")}>Home</button>
+      <button className={viewType === "liked"?"selected":"unselected"} onClick={()=>setViewType("liked")}>Liked</button>
+      <button className={viewType === "watched"?"selected":"unselected"} onClick={()=>setViewType("watched")}>Watched</button>
     </div>
   );
 }
