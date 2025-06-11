@@ -19,6 +19,7 @@ button:hover{
   background-color: rgb(132, 62, 132);
 }
 
+/* Easy way to bold and increases size of important  elements */
 .bold{
   font-weight: bold;
   font-size: x-large;

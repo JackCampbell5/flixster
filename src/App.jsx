@@ -46,14 +46,20 @@ const App = () => {
   if(movieData!==null){
     return (
       <div className="App">
-      <div className='Side'>
+      <nav>
         <SideBar viewType={viewType} setViewType={setViewType}/>
-      </div>
+      </nav>
+      <section>
+      <header>
+        <NavBar searchTerm={searchTerm} saveSearchTerm = {saveSearchTerm} search={search} sortType={sortType} saveSortType={saveSortType}/>
+      </header>
       <main>
-      <NavBar searchTerm={searchTerm} saveSearchTerm = {saveSearchTerm} search={search} sortType={sortType} saveSortType={saveSortType}/>
-      <MovieList data={movieData} searchTerm={searchSubmit} viewType={viewType} getMore={getMore}/>
-      <Footer />
+        <MovieList data={movieData} searchTerm={searchSubmit} viewType={viewType} getMore={getMore}/>
       </main>
+      <footer>
+        <Footer />
+      </footer>
+      </section>
       </div>
     )
   }
