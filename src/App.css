@@ -1,9 +1,9 @@
 .App {
-  text-align: center;
   display: flex;
   gap: 50px;
   justify-content: flex-start;
   align-items: flex-start;
+  text-align: center;
 }
 
 /* Split the sideBar and rest of the website into portion */

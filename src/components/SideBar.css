@@ -1,19 +1,23 @@
 .SideBar{
-    position:fixed;
+    position:fixed; /*Always stay on the right of the screen */
     display: flex;
     gap: 10px;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    top: 35%;
+    /*Aligns the sidebar to the middle left of the screen */
+    top: 50%;
+    bottom: 50%;
 }
 .SideBar button{
     padding: 10px 10px;
     width: min(10vw,100px);
 }
+/* When that screen is not the one selected */
 .unselected{
     border: 5px solid rgb(165, 0, 165);
 }
+/* When that is the current screen selected */
 .selected{
     background-color: rgb(231, 0, 231);
     border: 5px solid rgb(255, 136, 255);

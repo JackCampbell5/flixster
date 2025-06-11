@@ -27,7 +27,7 @@ function MovieList({data,searchTerm,viewType,getMore}) {
       })}
       </div>
      { viewType==="all" ?
-      <button className="update" onClick={getMore}>Load More</button>:<p>No More Movies Left</p>}
+      <button className="update" onClick={getMore}>Load More</button>:<p>No More Movies Selected</p>}
     </div>
   );
 }

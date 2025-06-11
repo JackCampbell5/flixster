@@ -24,6 +24,7 @@
     box-shadow: 0 0 10px rgb(0, 0, 0)
 
   }
+/* Helper classes to show and hide the modal */
 .modalVisible{
     display: block;
 }
@@ -47,38 +48,48 @@
     cursor: pointer;
   }
 
+/* The large poster on the right */
   .poster-large{
     width: 300px;
   }
 
-  #pop-header{
-    display: flex;
-    gap: 50px;
-    justify-content: flex-start;
-    align-items: flex-start;
-  }
-  .moreInfo{
-    display: flex;
-    gap: 50px;
-    justify-content: flex-start;
-    align-items: flex-start;
-    margin: 50px 10px;
-  }
+/* Flexbox containing the poster and moreInfo(text to right of poster) */
+#pop-header{
+  display: flex;
+  gap: 50px;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+/* The title  */
+.titlePop{
+  font-size: xx-large;
+  font-weight: bold;
+}
+/* Each individual detail to the left */
+.detailPop{
+  margin: 20px 0px;
+}
+
+
+/* The text to the right of the poster */
 #movie-info{
     text-align: left;
 }
 
+/* Flexbox containing the description and backdrop */
+.moreInfo{
+  display: flex;
+  gap: 50px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin: 50px 10px;
+  text-align: left;
+}
+/* The backdrop to the right of the description text */
 .backdrop-large{
     width: 40vw;
 }
-.titlePop{
-    font-size: xx-large;
-    font-weight: bold;
-}
+/* The overview(description) text */
 .overviewPop{
     font-size: large;
-}
-
-.detailPop{
-    margin: 20px 0px;
 }
