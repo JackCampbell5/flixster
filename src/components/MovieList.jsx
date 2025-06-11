@@ -9,21 +9,6 @@ import Movie from './Movie'
 
 function MovieList({data,searchTerm,viewType,getMore}) {
     let num = 0;
-    const [isUpate, setIsUpdated] = useState("");
-
-    const updateMovie = () => {
-        let retStr = "Liked:"
-        let retStr2 = "Watched  :"
-        for(let a of data){
-            if(a.liked === true){
-                retStr += a.title + " <br />";
-            }
-            if(a.watched === true){
-                retStr2 += a.title + " <br />";
-            }
-        }
-        setIsUpdated(retStr+retStr2);
-    }
 
     const [modelShown, setModelShown] = useState(false);
     const handleClose = () => setModelShown(false);
@@ -33,8 +18,6 @@ function MovieList({data,searchTerm,viewType,getMore}) {
   return (
     // JSX code for rendering the component
     <div className="MovieList">
-      <button className="update" onClick={updateMovie}>Update</button>
-      <p>{isUpate}</p>
       <div id="movies">
       {data.map(obj =>  {
         if(searchTerm === "" || obj.title.toLowerCase().includes(searchTerm.toLowerCase())){

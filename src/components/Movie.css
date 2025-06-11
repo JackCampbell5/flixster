@@ -12,7 +12,7 @@
     border: #460075 solid 10px;
     width: calc(200px - 20px);
 }
-.Movie:hover img{
+.moviePoster:hover img{
     width: calc(200px - 20px);
 }
 

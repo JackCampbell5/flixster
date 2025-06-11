@@ -68,3 +68,10 @@
     border: #6000a0 solid 5px;
     width: calc(70vw - 10px);
 }
+.titlePop{
+    font-size: xx-large;
+    font-weight: bold;
+}
+.overviewPop{
+    font-size: large;
+}
