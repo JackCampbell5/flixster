@@ -10,9 +10,10 @@ button{
   font-weight: normal;
   padding: 5px;
   background-color: rgb(115, 0, 115);
+  border: 3px solid rgb(48, 0, 48);
   color: white;
   font-size: 100%;
-  border-radius: 5px;
+  border-radius: 10px;
 }
 button:hover{
   background-color: rgb(132, 62, 132);

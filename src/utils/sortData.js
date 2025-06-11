@@ -1,5 +1,8 @@
-import { func } from "prop-types";
-
+/**
+ * Sorts the data based on the sort type. Changes the original data
+ * @param {Array} data  -  Data to sort
+ * @param {String} sortType - The type of sort to do. Starts with the type of sort and ends with D if it is decending and A if it is assending
+ */
 export function sortData(data, sortType) {
   // If data exists you can sort it
   if(data!==null&&data.length>1){
@@ -35,6 +38,7 @@ export function sortData(data, sortType) {
     }// End if data exists
   }// End sortData
 
+
 /**
  * Parses the sort type and returns the order of the data for the given sort type
  * @param {Array} data
@@ -67,7 +71,13 @@ function getOrderArray(data, sortType){
 }// End getOrderArray
 
 
-
+/**
+ * Sorts the array of data by the given parameter and returns a array of the new order
+ * @param {Array} data - The data to sort
+ * @param {*} paramName - The name of the parameter to sort by
+ * @param {*} numType - True if the parameter is a number, false if it is a string
+ * @returns Array of the new order
+ */
 function sortArray(data, paramName,numType=false) {
   let namesOrigonal, namesToSort;
   let num = 0;
@@ -82,6 +92,7 @@ function sortArray(data, paramName,numType=false) {
   return namesToSort.map(a => namesOrigonal.indexOf(a));
 }
 
+
 /**
  * Creates an array of numbers from 0 to len
  * @param {number} len
@@ -90,6 +101,7 @@ function sortArray(data, paramName,numType=false) {
 function getArrayOfNums(len){
   return Array.from({ length: len }, (_, i) => i);
 }
+
 
 /**
  * Swaps the two elements at positions a and b in the array

@@ -33,7 +33,7 @@ Deployed Application: [Flixster Deployed Site](https://flixster-uzek.onrender.co
   - [ ] Website implements all of the following accessibility features:
     - [ ] Semantic HTML
     - [x] [Color contrast](https://webaim.org/resources/contrastchecker/)
-    - [ ] Alt text for images
+    - [x] Alt text for images
   - [x] Website implements responsive web design.
     - [x] Uses CSS Flexbox or CSS Grid
     - [x] Movie tiles and images shrink/grow in response to window size

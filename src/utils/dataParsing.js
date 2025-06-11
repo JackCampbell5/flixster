@@ -1,4 +1,9 @@
 
+/**
+ * Get the movie data from the API and parse it into a format that can be used by the app
+ * @param {Function} after - The function to call after the data is fetched and place the results in
+ * @param {number} page - The page to fetch the movies from
+ */
 export async function fetchData(after,page){
     // TODO Make it get more than 1 page
     const apiKey = import.meta.env.VITE_APP_API_KEY;
@@ -7,6 +12,8 @@ export async function fetchData(after,page){
 
     const genreResults = await fetch(`https://api.themoviedb.org/3/genre/movie/list?api_key=${apiKey}`, options)
     const genreData = await genreResults.json();
+
+    // Parse the genre data into a more readable dictionary
     let genreDone = {}
     for(let a of genreData.genres){
         genreDone[a.id] = a.name;
@@ -16,6 +23,7 @@ export async function fetchData(after,page){
     after(bye)
 }
 
+// Options for the fetch
 const options = {
     method: 'GET',
     headers: {
@@ -24,7 +32,12 @@ const options = {
     }
 };
 
-
+/**
+ * Parses the data from the API into a dictionary that can be used by the app
+ * @param {Object} data - The data to parse
+ * @param {Object} genreData - A dictionary of genre ids to names
+ * @returns The dictionary of parsed data
+ */
 async function parseData(data,genreData) {
     const apiKey = import.meta.env.VITE_APP_API_KEY;
     let retDict = [];
@@ -56,6 +69,11 @@ async function parseData(data,genreData) {
     return retDict;
 }
 
+/**
+ * Find the trailer for a movie by fetching all videos and looking for a trailer
+ * @param {number} id - The id to get the trailer for
+ * @returns The YouTube link to the trailer
+ */
 async function getTrailer(id) {
     const apiKey = import.meta.env.VITE_APP_API_KEY;
     // Get all the videos to get the trailer
@@ -80,7 +98,12 @@ async function getTrailer(id) {
     return trailer;
 }
 
-
+/**
+ * Takes a data array and a dictionary of genre ids to names and parses the genre ids into a string
+ * @param {Array} data - An array of genre ids to parse
+ * @param {*} genreData - A dictionary of genre ids to names
+ * @returns The string of genre names
+ */
 function parseGenreData(data,genreData) {
     let retStr = "";
     for(let a of data.genre_ids) {
@@ -89,7 +112,11 @@ function parseGenreData(data,genreData) {
     return retStr.substring(0,retStr.length-2);
 }
 
-
+/**
+ * Formats a date into a string
+ * @param {string} date - date to format
+ * @returns The string of the formatted date
+ */
 function formatDate(date) {
     const myDateObj = new Date(date)
     return myDateObj.toLocaleDateString("en-US",
