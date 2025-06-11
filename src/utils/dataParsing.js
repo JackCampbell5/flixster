@@ -1,4 +1,3 @@
-import { func } from "prop-types";
 
 export async function fetchData(after,page){
     // TODO Make it get more than 1 page
@@ -98,75 +97,6 @@ function formatDate(date) {
         weekday: "long",
         month: "long",
         day: "numeric",
-        year: "numeric"
-      })
+        })
 
 }
-
-
-export function sortData(data, sortType) {
-    if(data!==null&&data.length>1){
-      let order = Array.from({ length: data.length }, (_, i) => i);
-      let assend = true
-
-      // Check if assending
-      if(sortType.substring(sortType.length-1)==='D'){
-        assend = false;
-      }
-
-      sortType  =  sortType.substring(0,sortType.length-1);// Get sort type
-
-      let namesOrigonal, namesToSort;
-      let num = 0;
-
-      // Get the new order
-      switch(sortType){
-        case "title":
-          //Sort by title
-          namesOrigonal = Array.from(data).map(element => element.title+(num++).toString());
-          namesToSort = Array.from(namesOrigonal).sort();
-          order = namesToSort.map(a => namesOrigonal.indexOf(a));
-          break;
-        case "release":
-          // Sort by author
-          namesOrigonal = Array.from(data).map(element =>element.sortDate+(num++).toString());
-          namesToSort = Array.from(namesOrigonal).sort();
-          order = namesToSort.map(a => namesOrigonal.indexOf(a));
-          order.reverse();
-          break;
-        case "vote":
-          //Sort by likes
-          namesOrigonal = Array.from(data).map(element => parseFloat(element.rating)+(num++)/1000);
-          namesToSort = Array.from(namesOrigonal).sort((a, b) => b-a);
-          order = namesToSort.map(a => namesOrigonal.indexOf(a));
-          break;
-        default:
-          namesOrigonal = Array.from(data).map(element => element.popularity+(num++).toString());
-          namesToSort = Array.from(namesOrigonal).sort();
-          order = namesToSort.map(a => namesOrigonal.indexOf(a));
-          break;
-      }
-
-      // Reverse the resulting list if the list is decending
-      if(!assend){
-        order.reverse();
-      }
-      let help = Array.from({ length: data.length }, (_, i) => i);
-        // Swap the tiles so they are in the given order
-       for(const a in order){
-        let b = help.indexOf(order[a]);
-        // Swap them
-        let c = data[a]
-        data[a] = data[b]
-        data[b] = c;
-
-        //Swap the helper array
-        let oneTemp = help[a];
-        help[a] = help[b]
-        help[b] = oneTemp
-       }
-
-
-    }
-
-  }

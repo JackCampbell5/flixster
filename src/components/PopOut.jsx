@@ -39,14 +39,29 @@ function PopOut({data,modalShown,closeModal,isLiked, setIsLiked,isWactched, setI
                             <img className="poster-large" src={`https://image.tmdb.org/t/p/w780/${poster}`}/>
                             <div id="movie-info">
                                 <p className="titlePop">{title}</p>
-                                <p className="datePop"><div className="bold">Release Date: </div>{date}</p>
-                                <p className="gernePop"><div className="bold">Genre: </div>{genre}</p>
-                                <p className="ratingPop"><div className="bold">Rating: </div>{rating}</p>
-                                <p className="runtimePop"><div className="bold">Runtime: </div>{runtime} Minutes</p>
-                            <LikeWatch movieDict={data} isLiked={isLiked} setIsLiked={setIsLiked} isWactched={isWactched} setIsWatched={setIsWatched}/>
+                                <div className="detailPop">
+                                    <div className="bold">Release Date: </div>
+                                    {date}
+                                </div>
+                                <div className="detailPop">
+                                    <div className="bold">Genre: </div>
+                                    {genre}
+                                </div>
+                                <div className="detailPop">
+                                    <div className="bold">Rating: </div>
+                                    {rating}
+                                </div>
+                                <div className="detailPop">
+                                    <div className="bold">Runtime: </div>
+                                    {runtime} Minutes
+                                </div>
+                                    <LikeWatch movieDict={data} isLiked={isLiked} setIsLiked={setIsLiked} isWactched={isWactched} setIsWatched={setIsWatched}/>
                             </div>
                         </header>
-                        <p className="overviewPop">{overview}</p>
+                            <div className="moreInfo">
+                                <p className="overviewPop">{overview}</p>
+                                <img className="backdrop-large" src={`https://image.tmdb.org/t/p/w780/${backdrop}`}/>
+                            </div>
                         <div className="trailer">
                             <h2>Trailer</h2>
                             {trailer === "" ? <p>No Trailer Available</p> :

@@ -6,7 +6,7 @@ import PropTypes, { func } from 'prop-types';
 
 
 let searchQuary = "";
-function NavBar({data, searchTerm,saveSearchTerm,search,sortType,saveSortType}) {
+function NavBar({searchTerm,saveSearchTerm,search,sortType,saveSortType}) {
   function clearSearch() {
   searchTerm = "";
   saveSearchTerm("")
@@ -30,7 +30,7 @@ function NavBar({data, searchTerm,saveSearchTerm,search,sortType,saveSortType}) 
         <p className="nav-text" id="sort-text">Sort:</p>
         <select className="nav-input" id="sort-playlists" value={sortType} onChange={saveSortType}>
             <option value="defaultA">Default</option>
-            <option value="titleA">Title</option>
+            <option value="titleA">Title &#40;Accending&#41;</option>
             <option value="titleD">Title &#40;Decending&#41;</option>
             <option value="releaseA">Release Date &#40;Accending&#41;</option>
             <option value="releaseD">Release Date &#40;Decending&#41;</option>
