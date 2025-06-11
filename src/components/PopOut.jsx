@@ -50,8 +50,11 @@ function PopOut({data,modalShown,closeModal}) {
                         <div className="trailer">
                             <h2>Trailer</h2>
                             {trailer === "" ? <p>No Trailer Available</p> :
-                            <a href={trailer}> <img id ="backdrop" src={`https://image.tmdb.org/t/p/w342/${backdrop}`}/></a>}
+                            <iframe width="420" height="315"
+                            src={trailer}>
+                            </iframe>}
                         </div>
+                            {/* <a href={trailer}> <img id ="backdrop" src={`https://image.tmdb.org/t/p/w342/${backdrop}`}/></a> */}
                     </div>
                 </div>
             </div>

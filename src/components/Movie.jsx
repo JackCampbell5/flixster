@@ -25,6 +25,7 @@ function Movie({movieDict,modal,setActiveMovie}) {
         <img className="poster" src={`https://image.tmdb.org/t/p/w342/${poster}`}/>
         <p className="title">{title}</p>
         <p className="Rating">Rating: {rating}</p>
+        {movieDict.date}
         <LikeWatch movieDict={movieDict}/>
     </div>
   );

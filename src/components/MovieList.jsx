@@ -38,7 +38,6 @@ function MovieList({data,searchTerm}) {
   return (
     // JSX code for rendering the component
     <div className="MovieList">
-      <h3>MovieList</h3>
       <button className="update" onClick={updateMovie}>Update</button>
       <p>{isUpate}</p>
       <div id="movies">

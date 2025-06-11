@@ -1,3 +1,10 @@
+.navContents{
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
 button{
     margin: 5px;
     font-weight: normal;
