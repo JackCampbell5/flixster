@@ -9,8 +9,12 @@ import { fetchData, sortData} from './utils/utils'
 
 const App = () => {
 
-  const [movieData, setMovieData] = useState(null);
-  useEffect((()=>{fetchData(setMovieData)}),[])
+  const [loadMore, setLoadMore] = useState(1);
+  const [movieData, setMovieData] = useState([]);
+  useEffect((()=>{fetchData(updateMovieData,loadMore)}),[])
+  function updateMovieData(dataToUpdateWith){
+    setMovieData(movieData.concat(dataToUpdateWith));
+  }
 
 
   const [searchTerm, setSearchTerm] = useState("");
@@ -18,6 +22,10 @@ const App = () => {
   const [sortType, setSortType] = useState("defaultA");
   const [viewType, setViewType] = useState("all");
 
+  const getMore = () => {
+    fetchData(updateMovieData,loadMore+1);
+    setLoadMore(loadMore+1);
+  }
 
   const saveSortType = (newData) => {
     setSortType(newData.target.value);
@@ -42,7 +50,7 @@ const App = () => {
       </div>
       <main>
       <NavBar searchTerm={searchTerm} saveSearchTerm = {saveSearchTerm} search={search} sortType={sortType} saveSortType={saveSortType}/>
-      <MovieList data={movieData} searchTerm={searchSubmit} viewType={viewType}/>
+      <MovieList data={movieData} searchTerm={searchSubmit} viewType={viewType} getMore={getMore}/>
       <Footer />
       </main>
       </div>

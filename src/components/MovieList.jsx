@@ -7,7 +7,7 @@ import Movie from './Movie'
 
 
 
-function MovieList({data,searchTerm,viewType}) {
+function MovieList({data,searchTerm,viewType,getMore}) {
     let num = 0;
     const [isUpate, setIsUpdated] = useState("");
 
@@ -43,6 +43,7 @@ function MovieList({data,searchTerm,viewType}) {
       }}else{<p>{obj.id}</p>}
       })}
       </div>
+      <button className="update" onClick={getMore}>Load More</button>
     </div>
   );
 }

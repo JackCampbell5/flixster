@@ -1,9 +1,9 @@
 import { func } from "prop-types";
 
-export async function fetchData(after){
+export async function fetchData(after,page){
     // TODO Make it get more than 1 page
     const apiKey = import.meta.env.VITE_APP_API_KEY;
-    const results = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc`, options)
+    const results = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&include_adult=false&include_video=false&language=en-US&page=${page}&sort_by=popularity.desc`, options)
     const data = await results.json();
 
     const genreResults = await fetch(`https://api.themoviedb.org/3/genre/movie/list?api_key=${apiKey}`, options)
