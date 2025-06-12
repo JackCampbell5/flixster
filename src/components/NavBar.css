@@ -19,7 +19,7 @@ h1{
 /* The div conatining all the search elements */
 .search{
     border: 2px solid #301d42;
-    padding: 1px;
+    padding: 1px 1px 1px 3px;
     margin: 10px;
     border-radius: 10px;
 }

@@ -123,7 +123,7 @@ Add your response here
 
 ### Open-source libraries used
 
-- Add any links to open-source libraries used in your project.
+- [Add any links to open-source libraries used in your project.](https://react-icons.github.io/react-icons/)
 
 ### Shout out
 

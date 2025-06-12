@@ -30,6 +30,8 @@
 }
 .SideBar button{
     padding: 10px 10px;
+    font-size: min(20px,2vw);
+    padding: 10px max(0px,0.1vw);
     width: min(10vw,100px);
     border: 5px solid rgb(165, 0, 165);
 }
