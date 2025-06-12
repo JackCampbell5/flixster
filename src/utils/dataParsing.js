@@ -4,9 +4,10 @@
  * @param {Function} after - The function to call after the data is fetched and place the results in
  * @param {number} page - The page to fetch the movies from
  */
+const apiKey = import.meta.env.VITE_APP_API_KEY;
+
 export async function fetchData(after,page,after2=()=>{null}){
     // TODO Make it get more than 1 page
-    const apiKey = import.meta.env.VITE_APP_API_KEY;
     const results = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&include_adult=false&include_video=false&language=en-US&page=${page}&sort_by=popularity.desc`, options)
     const data = await results.json();
 
@@ -41,7 +42,6 @@ const options = {
  * @returns The dictionary of parsed data
  */
 async function parseData(data,genreData) {
-    const apiKey = import.meta.env.VITE_APP_API_KEY;
     let retDict = [];
 
     for (let a of data.results) {
@@ -77,7 +77,6 @@ async function parseData(data,genreData) {
  * @returns The YouTube link to the trailer
  */
 async function getTrailer(id) {
-    const apiKey = import.meta.env.VITE_APP_API_KEY;
     // Get all the videos to get the trailer
     const trailerResults = await fetch(`https://api.themoviedb.org/3/movie/${id}/videos?api_key=${apiKey}&language=en-US&include_video_language=en`, options)
     const trailerData = await trailerResults.json();

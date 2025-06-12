@@ -37,7 +37,10 @@ const App = () => {
     saveSate(temp);
 
   }
-  function saveSate(data){
+  function saveSate(data=[]){
+    if(data.length===0){
+      data = movieData;
+    }
     localStorage.setItem('data', JSON.stringify(data));
   }
 
