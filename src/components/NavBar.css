@@ -35,7 +35,9 @@ h1{
 .NavBar input::placeholder{
     color: rgb(166, 148, 166);
     padding: 0px 10px;
-
+}
+.NavBar input:hover{
+    background-color: #3d3246;
 }
 /* The buttons in the nav bar */
 .NavBar button{
@@ -61,5 +63,10 @@ button:hover{
     border: 2px solid rgb(255, 231, 255);
     background-color: #301d42;
     color: rgb(255, 231, 255);
+
+}
+
+#sort-playlists:hover{
+    background-color: #3d3246;
 
 }

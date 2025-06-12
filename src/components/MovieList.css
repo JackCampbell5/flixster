@@ -11,6 +11,20 @@
     flex-wrap: wrap;
 }
 
+#movieTotal{
+    margin: 50px;
+}
+#movieTotalNum{
+    font-size: 60px;
+    font-weight: bold;
+    margin: 0px;
+}
+
+#movieTotalLabel{
+    font-size: 25px;
+    margin: 10px;
+}
+
 /* The button to load more movies */
 .MovieList .update{
     height: 60px;

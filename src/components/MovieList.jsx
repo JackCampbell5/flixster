@@ -19,6 +19,7 @@ function MovieList({data,searchTerm,viewType,getMore,saveSate, loading, setLoadi
     const [modelShown, setModelShown] = useState(false);
     const handleClose = () => setModelShown(false);
     const handleShow = () => setModelShown(true);
+    let num =0;
 
   return (
     // JSX code for rendering the component
@@ -26,10 +27,14 @@ function MovieList({data,searchTerm,viewType,getMore,saveSate, loading, setLoadi
       <div id="movies">
       {data.map(obj =>  {
         if(searchTerm === "" || obj.title.toLowerCase().includes(searchTerm.toLowerCase())){
-            if(viewType==="all"||(viewType==="liked"&&obj.liked===true)||(viewType==="watched"&&obj.watched===true)){
+            if(viewType==="all"||(viewType==="liked"&&obj.liked===true)||(viewType==="watched"&&obj.watched===true)){ num++;
           return(<Movie key={obj.id} movieDict={obj} modal={handleShow} modalShown={modelShown} closeModal={handleClose} saveSate={saveSate}/>)
       }}else{<p>{obj.id}</p>}
       })}
+      </div>
+      <div id="movieTotal">
+        <p id="movieTotalNum">{num} </p>
+        <p id="movieTotalLabel"> Movies Displayed</p>
       </div>
      { viewType==="all" ?
       <button className="update" id={"loading"+loading.toString()} onClick={loadMore}>{loading ?
@@ -38,7 +43,7 @@ function MovieList({data,searchTerm,viewType,getMore,saveSate, loading, setLoadi
               <p className="loading__letter">.</p>
               <p className="loading__letter">.</p>
               <p className="loading__letter">.</p>
-              </div>: "Load More"}</button>:<p>No More Movies Selected</p>}
+              </div>: "Load More"}</button>:null}
     </div>
   );
 }

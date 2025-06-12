@@ -14,7 +14,6 @@ function NavBar({searchTerm,saveSearchTerm,search,sortType,saveSortType}) {
   function submitSearch(newData){
     saveSearchTerm(newData.target.value);
   }
-  // const [searchQuary, updateSearchQuary] = useState("");
   return (
     // JSX code for rendering the component
     <div className="NavBar">
