@@ -105,7 +105,7 @@ Deployed Application: [Flixster Deployed Site](https://flixster-uzek.onrender.co
 `ADD_EMBEDDED_CODE_HERE`
 
 ### Planning Notes
-![planning notes][./Flixster_planning_notes.png]
+![planning notes](./Flixster_Planning_Notes.png)
 
 ### Reflection
 
