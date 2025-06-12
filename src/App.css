@@ -9,7 +9,7 @@
 /* Split the sideBar and rest of the website into portion */
 /* TODO: Goal to try to do with CSS grid */
 main{
-  width: 90vw;
+  width: 100%;
 }
 nav{
   width: 60px;

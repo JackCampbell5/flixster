@@ -1,5 +1,6 @@
 .MovieList{
-    margin: 200px 0px 0px 0px;
+    margin: 200px 0px 0px 70px;
+    width: calc(100vw - 70px);
 }
 /* Flexbox containing all the movies in the list */
 #movies{

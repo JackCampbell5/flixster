@@ -7,9 +7,8 @@ import Movie from './Movie'
 
 
 
-function MovieList({data,searchTerm,viewType,getMore,saveSate}) {
+function MovieList({data,searchTerm,viewType,getMore,saveSate, loading, setLoading}) {
     // Handel loading of new movies to effect loading text and so we are only loading one at a time
-    const [loading, setLoading] = useState(false);
     function loadMore() {
       if(!loading){
       setLoading(true);

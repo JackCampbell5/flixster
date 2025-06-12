@@ -1,8 +1,8 @@
 .NavBar{
     position:fixed; /*Always stay on the right of the screen */
     background-image: linear-gradient(180deg, #16002a, #16002a 80%, #16002a00);
-    width: 100%;
-    height: 225px;
+    width: 100vw;
+    height: 235px;
 }
 .navContents{
     display: flex;
@@ -34,6 +34,7 @@ h1{
 }
 .NavBar input::placeholder{
     color: rgb(166, 148, 166);
+    padding: 0px 10px;
 
 }
 /* The buttons in the nav bar */

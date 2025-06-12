@@ -1,22 +1,39 @@
 .SideBar{
     position:fixed; /*Always stay on the right of the screen */
+    /* display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; */
+    background-color: #16002a;
+    height: 100%;
+    /*Aligns the sidebar to the middle left of the screen */
+
+}
+
+.menu{
     display: flex;
     gap: 10px;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    /*Aligns the sidebar to the middle left of the screen */
-    top: 50%;
-    bottom: 50%;
+    height: 50%;
+}
+.reset{
+    position: fixed;
+    bottom: 10px;
+    left: 00px;
+}
+.reset:hover{
+    background-color: rgb(165, 0, 0);
+    border: 5px solid rgb(255, 136, 136);
 }
 .SideBar button{
     padding: 10px 10px;
     width: min(10vw,100px);
-}
-/* When that screen is not the one selected */
-.unselected{
     border: 5px solid rgb(165, 0, 165);
 }
+
 /* When that is the current screen selected */
 .selected{
     background-color: rgb(231, 0, 231);

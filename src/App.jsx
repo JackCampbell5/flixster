@@ -15,7 +15,8 @@ const App = () => {
   const [movieData, setMovieData] = useState(temp);
   useEffect((()=>{
     if(movieData.length===0){
-    fetchData(updateMovieData,loadMore)
+    setLoading(true)
+    fetchData(updateMovieData,loadMore,()=>setLoading(false))
     }else{
       updateMovieData([])
     }
@@ -32,7 +33,6 @@ const App = () => {
         arr.push(temp[a-(num)].id)
       }
     }//End of for loop
-    console.log(temp.length)
     setMovieData(temp);
     saveSate(temp);
 
@@ -44,7 +44,7 @@ const App = () => {
     localStorage.setItem('data', JSON.stringify(data));
   }
 
-
+  const [loading, setLoading] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [searchSubmit, setSearchSubmit] = useState("");
   const [sortType, setSortType] = useState("defaultA");
@@ -52,6 +52,7 @@ const App = () => {
 
   const getMore = (after) => {
     setSortType("defaultA");
+    setLoading(true)
     fetchData(updateMovieData,loadMore+1,after);
     setLoadMore(loadMore+1);
   }
@@ -69,21 +70,29 @@ const App = () => {
     setSearchSubmit(searchTerm); // Set the searchSubmit state to the searchTerm state
   }
 
+  function reset(){
+    localStorage.removeItem('data')
+    setLoading(true)
+    window.location.reload(true)
+  }
+
 
 
   if(movieData!==null){
     return (
       <div className="App">
-      <nav>
-        <SideBar viewType={viewType} setViewType={setViewType}/>
-      </nav>
       <section>
       <header>
         <NavBar searchTerm={searchTerm} saveSearchTerm = {saveSearchTerm} search={search} sortType={sortType} saveSortType={saveSortType}/>
       </header>
+      <section>
+      <nav>
+        <SideBar viewType={viewType} setViewType={setViewType} reset={reset}/>
+      </nav>
       <main>
-        <MovieList data={movieData} searchTerm={searchSubmit} viewType={viewType} getMore={getMore}saveSate={saveSate}/>
+        <MovieList data={movieData} searchTerm={searchSubmit} viewType={viewType} getMore={getMore}saveSate={saveSate} loading={loading} setLoading={setLoading}/>
       </main>
+      </section>
       <footer>
         <Footer />
       </footer>
