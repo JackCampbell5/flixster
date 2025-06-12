@@ -33,7 +33,13 @@ function MovieList({data,searchTerm,viewType,getMore,saveSate}) {
       })}
       </div>
      { viewType==="all" ?
-      <button className="update" id={"loading"+loading.toString()} onClick={loadMore}>{loading ? "Loading" : "Load More"}</button>:<p>No More Movies Selected</p>}
+      <button className="update" id={"loading"+loading.toString()} onClick={loadMore}>{loading ?
+            <div className="loadingInside">Loading
+              <p className="loading__letter">.</p>
+              <p className="loading__letter">.</p>
+              <p className="loading__letter">.</p>
+              <p className="loading__letter">.</p>
+              </div>: "Load More"}</button>:<p>No More Movies Selected</p>}
     </div>
   );
 }
