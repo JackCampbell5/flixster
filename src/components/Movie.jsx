@@ -8,7 +8,7 @@ import PropTypes, { func } from 'prop-types';
 
 
 
-function Movie({movieDict,modal,setActiveMovie,modalShown,closeModal}) {
+function Movie({movieDict,modal,modalShown,closeModal,saveSate}) {
     // Setup params
     let title = movieDict.title;
     let poster = movieDict.poster;
@@ -21,7 +21,6 @@ function Movie({movieDict,modal,setActiveMovie,modalShown,closeModal}) {
 
 
     function clickMovie() {
-        setActiveMovie(movieDict);
         if(!modalShown){
             modal();
             setThisModelShown(true);
@@ -43,8 +42,8 @@ function Movie({movieDict,modal,setActiveMovie,modalShown,closeModal}) {
         <p className="title">{title}</p>
         <p className="Rating">Rating: {rating}</p>
         {movieDict.date}
-        <LikeWatch movieDict={movieDict} isLiked={isLiked} setIsLiked={setIsLiked} isWactched={isWactched} setIsWatched={setIsWatched}/>
-        <PopOut data={movieDict} modalShown={thisModelShown} closeModal={closeThisModal} isLiked={isLiked} setIsLiked={setIsLiked} isWactched={isWactched} setIsWatched={setIsWatched}/>
+        <LikeWatch movieDict={movieDict} isLiked={isLiked} setIsLiked={setIsLiked} isWactched={isWactched} setIsWatched={setIsWatched} saveSate={saveSate}/>
+        <PopOut data={movieDict} modalShown={thisModelShown} closeModal={closeThisModal} isLiked={isLiked} setIsLiked={setIsLiked} isWactched={isWactched} setIsWatched={setIsWatched}saveSate={saveSate}/>
     </div>
   );
 }

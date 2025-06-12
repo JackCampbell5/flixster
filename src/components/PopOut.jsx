@@ -7,7 +7,7 @@ import LikeWatch from "./LikeWatch";
 
 
 
-function PopOut({data,modalShown,closeModal,isLiked, setIsLiked,isWactched, setIsWatched}) {
+function PopOut({data,modalShown,closeModal,isLiked, setIsLiked,isWactched, setIsWatched,saveSate}) {
     let title = data.title;
     let poster = data.poster;
     let date = data.date;
@@ -26,6 +26,7 @@ function PopOut({data,modalShown,closeModal,isLiked, setIsLiked,isWactched, setI
     useEffect(() => {
        window.addEventListener('click', handleOutsideClick);
     })
+    if(!modalShown) return null;
   return (
     // JSX code for rendering the component
     <div className="PopOut">
@@ -55,7 +56,7 @@ function PopOut({data,modalShown,closeModal,isLiked, setIsLiked,isWactched, setI
                                     <div className="bold">Runtime: </div>
                                     {runtime} Minutes
                                 </div>
-                                    <LikeWatch movieDict={data} isLiked={isLiked} setIsLiked={setIsLiked} isWactched={isWactched} setIsWatched={setIsWatched}/>
+                                    <LikeWatch movieDict={data} isLiked={isLiked} setIsLiked={setIsLiked} isWactched={isWactched} setIsWatched={setIsWatched} saveSate={saveSate}/>
                             </div>
                         </header>
                             <div className="moreInfo">

@@ -6,15 +6,39 @@ import MovieList from './components/MovieList'
 import Footer from './components/Footer'
 import {fetchData} from './utils/dataParsing'
 import {sortData} from './utils/sortData'
+import { func } from 'prop-types'
 
 
 const App = () => {
-
-  const [loadMore, setLoadMore] = useState(1);
-  const [movieData, setMovieData] = useState([]);
-  useEffect((()=>{fetchData(updateMovieData,loadMore)}),[])
+  const temp = localStorage.getItem('data')? JSON.parse(localStorage.getItem('data')) : [];
+  const [loadMore, setLoadMore] = useState(Math.ceil(temp.length/20)+1);
+  const [movieData, setMovieData] = useState(temp);
+  useEffect((()=>{
+    if(movieData.length===0){
+    fetchData(updateMovieData,loadMore)
+    }else{
+      updateMovieData([])
+    }
+  }),[])
   function updateMovieData(dataToUpdateWith){
-    setMovieData(movieData.concat(dataToUpdateWith));
+    let temp = movieData.concat(dataToUpdateWith);
+    const arr = []
+    let num = 0;
+    let hi = temp.length
+    for(let a = 0; a<hi;a++){
+      if(arr.includes(temp[a-(num)].id)){
+        temp.splice(a-(num++),1)
+      }else{
+        arr.push(temp[a-(num)].id)
+      }
+    }//End of for loop
+    console.log(temp.length)
+    setMovieData(temp);
+    saveSate(temp);
+
+  }
+  function saveSate(data){
+    localStorage.setItem('data', JSON.stringify(data));
   }
 
 
@@ -23,8 +47,9 @@ const App = () => {
   const [sortType, setSortType] = useState("defaultA");
   const [viewType, setViewType] = useState("all");
 
-  const getMore = () => {
-    fetchData(updateMovieData,loadMore+1);
+  const getMore = (after) => {
+    setSortType("defaultA");
+    fetchData(updateMovieData,loadMore+1,after);
     setLoadMore(loadMore+1);
   }
 
@@ -54,7 +79,7 @@ const App = () => {
         <NavBar searchTerm={searchTerm} saveSearchTerm = {saveSearchTerm} search={search} sortType={sortType} saveSortType={saveSortType}/>
       </header>
       <main>
-        <MovieList data={movieData} searchTerm={searchSubmit} viewType={viewType} getMore={getMore}/>
+        <MovieList data={movieData} searchTerm={searchSubmit} viewType={viewType} getMore={getMore}saveSate={saveSate}/>
       </main>
       <footer>
         <Footer />

@@ -4,7 +4,7 @@
  * @param {Function} after - The function to call after the data is fetched and place the results in
  * @param {number} page - The page to fetch the movies from
  */
-export async function fetchData(after,page){
+export async function fetchData(after,page,after2=()=>{null}){
     // TODO Make it get more than 1 page
     const apiKey = import.meta.env.VITE_APP_API_KEY;
     const results = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&include_adult=false&include_video=false&language=en-US&page=${page}&sort_by=popularity.desc`, options)
@@ -21,6 +21,8 @@ export async function fetchData(after,page){
 
     const bye = await parseData(data,genreDone)
     after(bye)
+    console.log("Done")
+    after2();
 }
 
 // Options for the fetch

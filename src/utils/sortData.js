@@ -6,7 +6,6 @@
 export function sortData(data, sortType) {
   // If data exists you can sort it
   if(data!==null&&data.length>1){
-    console.log("Sorting data");
       let assend = true
 
       // Check if assending

@@ -8,18 +8,20 @@ import { MdOutlineMovieCreation,MdMovie } from "react-icons/md";
 
 
 
-function LikeWatch({movieDict, isLiked, setIsLiked,isWactched, setIsWatched}) {
+function LikeWatch({movieDict, isLiked, setIsLiked,isWactched, setIsWatched,saveSate}) {
 
     const likeMovie = (e) => {
         e.stopPropagation();
         setIsLiked(!isLiked);
         movieDict.liked = !isLiked
+        saveSate()
     }
 
     const watchedMovie = (e) => {
         e.stopPropagation();
         setIsWatched(!isWactched);
         movieDict.watched = !isWactched
+        saveSate()
     }
 
   return (
