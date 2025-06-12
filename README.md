@@ -29,9 +29,9 @@ Deployed Application: [Flixster Deployed Site](https://flixster-uzek.onrender.co
     - [x] Clicks the Submit/Search button
   - [x] Users can click the Clear button. When clicked:
     - [x] Most recent search results are cleared from the text input field and the grid view and all current movies are displayed in a grid view
-- [ ] **Design Features**
-  - [ ] Website implements all of the following accessibility features:
-    - [ ] Semantic HTML
+- [x] **Design Features**
+  - [x] Website implements all of the following accessibility features:
+    - [x] Semantic HTML
     - [x] [Color contrast](https://webaim.org/resources/contrastchecker/)
     - [x] Alt text for images
   - [x] Website implements responsive web design.
@@ -103,6 +103,9 @@ Deployed Application: [Flixster Deployed Site](https://flixster-uzek.onrender.co
 `TODO://` Add the embedded URL code to your animated app walkthrough below, `ADD_EMBEDDED_CODE_HERE`. Make sure the video or gif actually renders and animates when viewing this README. Ensure your walkthrough showcases the presence and/or functionality of all features you implemented above (check them off as you film!). Pay attention to any **VIDEO WALKTHROUGH SPECIAL INSTRUCTIONS** checkboxes listed above to ensure graders see the full functionality of your website! (🚫 Remove this paragraph after adding walkthrough video)
 
 `ADD_EMBEDDED_CODE_HERE`
+
+### Planning Notes
+![planning notes][./Flixster_planning_notes.png]
 
 ### Reflection
 
