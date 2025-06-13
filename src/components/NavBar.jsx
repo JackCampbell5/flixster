@@ -17,7 +17,9 @@ function NavBar({searchTerm,saveSearchTerm,search,sortType,saveSortType}) {
   return (
     // JSX code for rendering the component
     <div className="NavBar">
+      <div className="banner">
       <h1>Movie Night</h1>
+      </div>
       <div className="navContents">
         <div className="search">
           <form onSubmit={search}>

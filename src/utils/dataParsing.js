@@ -6,12 +6,16 @@
  */
 const apiKey = import.meta.env.VITE_APP_API_KEY;
 
+function getApiRequest(category,params){
+    return `https://api.themoviedb.org/3/${category}movie${params}api_key=${apiKey}`
+}
+
+
 export async function fetchData(after,page,after2=()=>{null}){
     // TODO Make it get more than 1 page
-    const results = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&include_adult=false&include_video=false&language=en-US&page=${page}&sort_by=popularity.desc`, options)
+    const results = await fetch(getApiRequest("discover/", `?include_adult=false&include_video=false&language=en-US&page=${page}&sort_by=popularity.desc&`), options)
     const data = await results.json();
-
-    const genreResults = await fetch(`https://api.themoviedb.org/3/genre/movie/list?api_key=${apiKey}`, options)
+    const genreResults = await fetch(getApiRequest("genre/","/list?"), options)
     const genreData = await genreResults.json();
 
     // Parse the genre data into a more readable dictionary
@@ -46,7 +50,7 @@ async function parseData(data,genreData) {
 
     for (let a of data.results) {
         // Get the extra details for runtime
-        const detailResults = await fetch(`https://api.themoviedb.org/3/movie/${a.id}?api_key=${apiKey}&language=en-US`, options)
+        const detailResults = await fetch(getApiRequest("",`/${a.id}?language=en-US&`), options)
         const detailData = await detailResults.json();
 
         let trailer = await getTrailer(a.id)
@@ -78,7 +82,8 @@ async function parseData(data,genreData) {
  */
 async function getTrailer(id) {
     // Get all the videos to get the trailer
-    const trailerResults = await fetch(`https://api.themoviedb.org/3/movie/${id}/videos?api_key=${apiKey}&language=en-US&include_video_language=en`, options)
+    let youTubeStarter = "https://www.youtube.com/embed/"
+    const trailerResults = await fetch(getApiRequest("",`/${id}/videos?&language=en-US&include_video_language=en&`), options)
     const trailerData = await trailerResults.json();
     let trailer = "";
     if (!trailerData.results.length) {
@@ -86,7 +91,7 @@ async function getTrailer(id) {
     }
     for(let b of trailerData.results) {
         if(b.type == "Trailer"&&b.site==="YouTube"){
-            trailer = `https://www.youtube.com/embed/${b.key}`;
+            trailer = youTubeStarter+b.key;
             if(b.name === "Official Trailer") {
                 break;
             }
@@ -94,7 +99,7 @@ async function getTrailer(id) {
     }
     // If trailer is not found, use the first video found
     if(!trailer) {
-        trailer = `https://www.youtube.com/embed/${trailerData.results[0].key}`;
+        trailer = youTubeStarter+trailerData.results[0].key;
     }
     return trailer;
 }

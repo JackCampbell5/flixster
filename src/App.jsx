@@ -10,9 +10,13 @@ import { func } from 'prop-types'
 
 
 const App = () => {
-  const temp = localStorage.getItem('data')? JSON.parse(localStorage.getItem('data')) : [];
-  const [loadMore, setLoadMore] = useState(Math.ceil(temp.length/20)+1);
-  const [movieData, setMovieData] = useState(temp);
+
+  // START Data Fetching Methods
+  const localData = localStorage.getItem('data')? JSON.parse(localStorage.getItem('data')) : [];
+  const starterPage = Math.ceil(localData.length/20)+1;
+  const [loadMore, setLoadMore] = useState(starterPage);
+  const [movieData, setMovieData] = useState(localData);
+  // If there is no data in local storage, fetch data from the API and update the state
   useEffect((()=>{
     if(movieData.length===0){
     setLoading(true)
@@ -21,6 +25,8 @@ const App = () => {
       updateMovieData([])
     }
   }),[])
+
+  // Update the movieData state with the new data
   function updateMovieData(dataToUpdateWith){
     let temp = movieData.concat(dataToUpdateWith);
     const arr = []
@@ -37,6 +43,8 @@ const App = () => {
     saveSate(temp);
 
   }
+
+  // Save the data to local storage
   function saveSate(data=[]){
     if(data.length===0){
       data = movieData;
@@ -44,12 +52,7 @@ const App = () => {
     localStorage.setItem('data', JSON.stringify(data));
   }
 
-  const [loading, setLoading] = useState(false);
-  const [searchTerm, setSearchTerm] = useState("");
-  const [searchSubmit, setSearchSubmit] = useState("");
-  const [sortType, setSortType] = useState("defaultA");
-  const [viewType, setViewType] = useState("all");
-
+  // Get another page of movies from the API
   const getMore = (after) => {
     setSortType("defaultA");
     setLoading(true)
@@ -57,26 +60,39 @@ const App = () => {
     setLoadMore(loadMore+1);
   }
 
-  const saveSortType = (newData) => {
-    setSortType(newData.target.value);
-    sortData(movieData, newData.target.value);
-  }
-
-  const saveSearchTerm = (newData) => {
-    setSearchTerm(newData);
-  }
-  function search(e){
-    e.preventDefault(); // Prevents the default form submission
-    setSearchSubmit(searchTerm); // Set the searchSubmit state to the searchTerm state
-  }
-
+  // Reset the data
   function reset(){
     localStorage.removeItem('data')
     setLoading(true)
     window.location.reload(true)
   }
+  // END Data Fetching Methods
 
+  // The term from the search bar
+  const [searchTerm, setSearchTerm] = useState("");
+  const saveSearchTerm = (newData) => {
+    setSearchTerm(newData);
+  }
 
+  // The submit button status for the search bar
+  const [searchSubmit, setSearchSubmit] = useState("");
+  function search(e){
+    e.preventDefault(); // Prevents the default form submission
+    setSearchSubmit(searchTerm); // Set the searchSubmit state to the searchTerm state
+  }
+
+  // The sort type
+  const [sortType, setSortType] = useState("defaultA");
+  const saveSortType = (newData) => {
+    setSortType(newData.target.value);
+    sortData(movieData, newData.target.value);
+  }
+
+  // The view type
+  const [viewType, setViewType] = useState("all");
+
+  // Whether the site is loading more data
+  const [loading, setLoading] = useState(false);
 
   if(movieData!==null){
     return (
