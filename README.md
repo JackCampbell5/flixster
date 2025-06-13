@@ -59,10 +59,10 @@ Deployed Application: [Flixster Deployed Site](https://flixster-uzek.onrender.co
     - [x] Search bar
     - [x] Movie grid
     - [x] Footer section
-    - [ ] **VIDEO WALKTHROUGH SPECIAL INSTRUCTIONS**: To ease the grading process, please use the [color contrast checker](https://webaim.org/resources/contrastchecker/) to demonstrate to the grading team that text and background colors on your website have appropriate contrast. The Contrast Ratio should be above 4.5:1 and should have a green box surrounding it.
+    - [x] **VIDEO WALKTHROUGH SPECIAL INSTRUCTIONS**: To ease the grading process, please use the [color contrast checker](https://webaim.org/resources/contrastchecker/) to demonstrate to the grading team that text and background colors on your website have appropriate contrast. The Contrast Ratio should be above 4.5:1 and should have a green box surrounding it.
   - [x] **Deployment**
   - [x] Website is deployed via Render.
-  - [ ] **VIDEO WALKTHROUGH SPECIAL INSTRUCTIONS**: For ease of grading, please use the deployed version of your website when creating your walkthrough.
+  - [x] **VIDEO WALKTHROUGH SPECIAL INSTRUCTIONS**: For ease of grading, please use the deployed version of your website when creating your walkthrough.
 
 #### STRETCH FEATURES
 
@@ -100,9 +100,7 @@ Deployed Application: [Flixster Deployed Site](https://flixster-uzek.onrender.co
 
 ### Walkthrough Video
 
-`TODO://` Add the embedded URL code to your animated app walkthrough below, `ADD_EMBEDDED_CODE_HERE`. Make sure the video or gif actually renders and animates when viewing this README. Ensure your walkthrough showcases the presence and/or functionality of all features you implemented above (check them off as you film!). Pay attention to any **VIDEO WALKTHROUGH SPECIAL INSTRUCTIONS** checkboxes listed above to ensure graders see the full functionality of your website! (🚫 Remove this paragraph after adding walkthrough video)
-
-`ADD_EMBEDDED_CODE_HERE`
+[Walkthru Video](https://www.loom.com/share/09ef655e9eea4a34901312917542f83b?sid=7763ac1b-6a64-4d99-b2b4-125d38ad4595)
 
 ### Planning Notes
 ![planning notes](./Flixster_Planning_Notes.jpg)
@@ -111,20 +109,20 @@ Deployed Application: [Flixster Deployed Site](https://flixster-uzek.onrender.co
 
 * Did the topics discussed in your labs prepare you to complete the assignment? Be specific, which features in your weekly assignment did you feel unprepared to complete?
 
-Add your response here
+Yes, the topics discussed in the labs prepared me to complete the assignment. It was extremely helpful to know how set state worked as well as get an in depth view on the proper way to do API requests. I have done API requests in the past but in a very janky way. It was very helpful to walk thru the basics very slowly so we understand how they worked and so we could do more complicated ones in the project
 
 * If you had more time, what would you have done differently? Would you have added additional features? Changed the way your project responded to a particular event, etc.
 
-Add your response here
+There is not a low I would have done if I had more time. I think we had the correct amount of time for this project and a good balance of project and lab time. If I would have had more time I would have liked to work on a sidebar the comes out like a hamburger menu as well as adjusting individual animations on a lot more of my divs.
 
 * Reflect on your project demo, what went well? Were there things that maybe didn't go as planned? Did you notice something that your peer did that you would like to try next time?
 
-Add your response here
+My project demo went pretty well. I feel like it was very short because I ran out of things to talk about as it was a relatively simple assignment but I would like to have gone more in depth and created a longer video to make it easeir for the graders to grade
 
 ### Open-source libraries used
 
-- [Add any links to open-source libraries used in your project.](https://react-icons.github.io/react-icons/)
+- [React Icons Library](https://react-icons.github.io/react-icons/)
 
 ### Shout out
 
-Give a shout out to somebody from your cohort that especially helped you during your project. This can be a fellow peer, instructor, TA, mentor, etc.
+Code Path Mentors, Cohort 2, and Shaurya Srivastava
