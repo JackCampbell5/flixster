@@ -54,7 +54,7 @@ Deployed Application: [Flixster Deployed Site](https://flixster-uzek.onrender.co
       - [x] Vote average (descending, highest to lowest)
     - [x] When a sort option is clicked, movies display in a grid according to selected criterion.
   - [x] Website displays:
-    - [ ] Header section
+    - [x] Header section
     - [x] Banner section
     - [x] Search bar
     - [x] Movie grid

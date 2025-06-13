@@ -7,7 +7,7 @@ import Movie from './Movie'
 
 
 
-function MovieList({data,searchTerm,viewType,getMore,saveSate, loading, setLoading}) {
+function MovieList({data,viewType,getMore,saveSate, loading, setLoading}) {
     // Handel loading of new movies to effect loading text and so we are only loading one at a time
     function loadMore() {
       if(!loading){
@@ -26,10 +26,9 @@ function MovieList({data,searchTerm,viewType,getMore,saveSate, loading, setLoadi
     <div className="MovieList">
       <div id="movies">
       {data.map(obj =>  {
-        if(searchTerm === "" || obj.title.toLowerCase().includes(searchTerm.toLowerCase())){
             if(viewType==="all"||(viewType==="liked"&&obj.liked===true)||(viewType==="watched"&&obj.watched===true)){ num++;
           return(<Movie key={obj.id} movieDict={obj} modal={handleShow} modalShown={modelShown} closeModal={handleClose} saveSate={saveSate}/>)
-      }}else{<p>{obj.id}</p>}
+      }else{<p>{obj.id}</p>}
       })}
       </div>
       <div id="movieTotal">

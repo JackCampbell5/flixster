@@ -12,7 +12,7 @@ import { func } from 'prop-types'
 const App = () => {
 
   // START Data Fetching Methods
-  const localData = localStorage.getItem('data')? JSON.parse(localStorage.getItem('data')) : [];
+  let localData = localStorage.getItem('data')? JSON.parse(localStorage.getItem('data')) : [];
   const starterPage = Math.ceil(localData.length/20)+1;
   const [loadMore, setLoadMore] = useState(starterPage);
   const [movieData, setMovieData] = useState(localData);
@@ -20,43 +20,64 @@ const App = () => {
   useEffect((()=>{
     if(movieData.length===0){
     setLoading(true)
-    fetchData(updateMovieData,loadMore,()=>setLoading(false))
+    fetchData(updateMovieData(true),loadMore,()=>setLoading(false))
     }else{
-      updateMovieData([])
+      updateMovieData(true,[])
     }
   }),[])
 
   // Update the movieData state with the new data
-  function updateMovieData(dataToUpdateWith){
-    let temp = movieData.concat(dataToUpdateWith);
-    const arr = []
+  function updateMovieData(update){return (dataToUpdateWith)=>{
+    let oldIs = {}
+    let temp = dataToUpdateWith
+    if(update){
+      temp = movieData.concat(dataToUpdateWith);
+    }else{
+    for(let a in movieData){
+      oldIs[movieData[a].id] = a
+     }
+    }
+
+    let arr = []
+    let arr2=[]
     let num = 0;
     let hi = temp.length
     for(let a = 0; a<hi;a++){
-      if(arr.includes(temp[a-(num)].id)){
+      if(!update&&temp[a-(num)].id in oldIs&&!(arr.includes(temp[a-(num)].id))){
+        arr2.push(movieData[oldIs[temp[a-(num)].id]])
+        arr.push(temp[a-(num)].id)
+        temp.splice(a-(num++),1)
+      }else if(arr.includes(temp[a-(num)].id)){
         temp.splice(a-(num++),1)
       }else{
         arr.push(temp[a-(num)].id)
       }
     }//End of for loop
+    temp = arr2.concat(temp)
     setMovieData(temp);
     saveSate(temp);
-
+  }//End currying function
   }
 
   // Save the data to local storage
   function saveSate(data=[]){
-    if(data.length===0){
-      data = movieData;
+    if(searchTerm===""){
+      if(data.length===0){
+        data = movieData;
+      }
+      localStorage.setItem('data', JSON.stringify(data));
     }
-    localStorage.setItem('data', JSON.stringify(data));
   }
 
   // Get another page of movies from the API
   const getMore = (after) => {
     setSortType("defaultA");
     setLoading(true)
-    fetchData(updateMovieData,loadMore+1,after);
+    if(searchTerm!==""){
+      fetchData(updateMovieData(true),loadMore+1,after,searchTerm);
+    }else{
+      fetchData(updateMovieData(true),loadMore+1,after);
+    }
     setLoadMore(loadMore+1);
   }
 
@@ -75,10 +96,25 @@ const App = () => {
   }
 
   // The submit button status for the search bar
-  const [searchSubmit, setSearchSubmit] = useState("");
   function search(e){
     e.preventDefault(); // Prevents the default form submission
-    setSearchSubmit(searchTerm); // Set the searchSubmit state to the searchTerm state
+    if(searchTerm===""){
+      // window.location.reload(true)
+      console.log("No search term")
+      let oldData = JSON.parse(localStorage.getItem('data'))
+      console.log(oldData)
+      for(let b of movieData){
+        if(b.liked===true||b.watched===true){
+          oldData.push(b)
+        }
+      }
+      updateMovieData(false)(oldData)
+    }else{
+      // setSearchSubmit(searchTerm); // Set the searchSubmit state to the searchTerm state
+      setLoading(true)
+      updateMovieData(false)([])
+      fetchData(updateMovieData(false),loadMore+1,()=>setLoading(false),searchTerm);
+    }
   }
 
   // The sort type
@@ -106,7 +142,7 @@ const App = () => {
         <SideBar viewType={viewType} setViewType={setViewType} reset={reset}/>
       </nav>
       <main>
-        <MovieList data={movieData} searchTerm={searchSubmit} viewType={viewType} getMore={getMore}saveSate={saveSate} loading={loading} setLoading={setLoading}/>
+        <MovieList data={movieData} viewType={viewType} getMore={getMore}saveSate={saveSate} loading={loading} setLoading={setLoading}/>
       </main>
       </section>
       <footer>

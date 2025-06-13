@@ -6,14 +6,18 @@
  */
 const apiKey = import.meta.env.VITE_APP_API_KEY;
 
-function getApiRequest(category,params){
+function getApiRequest(category,params, search){
     return `https://api.themoviedb.org/3/${category}movie${params}api_key=${apiKey}`
 }
 
 
-export async function fetchData(after,page,after2=()=>{null}){
+export async function fetchData(after,page,after2=()=>{null}, searchFor = ""){
     // TODO Make it get more than 1 page
-    const results = await fetch(getApiRequest("discover/", `?include_adult=false&include_video=false&language=en-US&page=${page}&sort_by=popularity.desc&`), options)
+    let apiOrgin = getApiRequest("discover/", `?include_adult=false&include_video=false&language=en-US&page=${page}&sort_by=popularity.desc&`)
+    if(searchFor){
+        apiOrgin = getApiRequest("search/", `?query=${searchFor}&include_adult=false&include_video=false&language=en-US&page=${page}&sort_by=popularity.desc&`)
+    }
+    const results = await fetch(apiOrgin, options)
     const data = await results.json();
     const genreResults = await fetch(getApiRequest("genre/","/list?"), options)
     const genreData = await genreResults.json();
@@ -26,7 +30,6 @@ export async function fetchData(after,page,after2=()=>{null}){
 
     const bye = await parseData(data,genreDone)
     after(bye)
-    console.log("Done")
     after2();
 }
 
