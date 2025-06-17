@@ -2,7 +2,7 @@
 
 Submitted by: Jack Campbell
 
-Estimated time spent: **#** hours spent in total
+Estimated time spent: 18 hours spent in total
 
 Deployed Application: [Flixster Deployed Site](https://flixster-uzek.onrender.com)
 
